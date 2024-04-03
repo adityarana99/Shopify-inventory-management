@@ -1,0 +1,16 @@
+<div class="admin-page">
+    <header>
+        <h1>Welcome to Admin Page</h1>
+    </header>
+    <main>
+        <div *ngIf="!isLoggedIn">
+            <app-login (loginEvent)="onLogin($event)"></app-login>
+        </div>
+        <div *ngIf="isLoggedIn">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+    <!-- <footer>
+        <p>Admin Page Footer</p>
+    </footer> -->
+</div>

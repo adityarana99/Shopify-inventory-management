@@ -1,0 +1,43 @@
+<div class="product-list">
+  <h2>Product List</h2>
+
+  <!-- Add Product Button -->
+  <button mat-raised-button color="primary" (click)="onAddProduct()" routerLink="/add">Add Product</button>
+
+  <!-- Display products in a table format -->
+  <div class="table-container">
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Modify</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products | slice:(currentPage-1)*pageSize:currentPage*pageSize">
+          <td><img [src]="product.image" alt="{{ product.name }}"></td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>
+            <button mat-raised-button color="primary" routerLink="/modify/{{product.id}}">Modify</button>
+          </td>
+          <td>
+            <button mat-raised-button color="warn" (click)="deleteProduct(product.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button mat-button [disabled]="currentPage === 1" (click)="prevPage()">Previous</button>
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+    <button mat-button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+  </div>
+</div>

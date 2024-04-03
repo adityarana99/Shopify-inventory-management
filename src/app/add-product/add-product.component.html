@@ -1,0 +1,19 @@
+<form #addProductForm="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput type="text" placeholder="Name" [(ngModel)]="product.name" name="name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Description" [(ngModel)]="product.description" name="description" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Image URL" [(ngModel)]="product.image" name="image" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="number" placeholder="Price" [(ngModel)]="product.price" name="price" required>
+    </mat-form-field>
+    <br>
+    <button [disabled]="addProductForm.invalid" mat-raised-button type="submit">Add Product</button>
+</form>
